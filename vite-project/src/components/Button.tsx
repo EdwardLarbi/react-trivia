@@ -1,12 +1,25 @@
+import { useState } from "react";
+
 interface Props{
-    name: string;
-    onClick: () => void;
+    namePrev: string;
+    nameNext: string;
+    onClick1: () => void;
+    onClick2: () => void;
 }
 
-const Button = ({name, onClick} : Props) => {
+const Button = ({namePrev, nameNext, onClick1, onClick2} : Props) => {
+    const [clickCount, setClickCount] = useState(0);
+
+    function toggle(){
+        setClickCount(prevClickCount => prevClickCount + 1);
+    }
     
   return (
-    <button onClick={onClick}>{name}</button>
+    <div className={clickCount != 19 ? "show" : "noShow" } onClick={toggle}>
+        <button onClick={onClick1}>{namePrev}</button>
+        <button onClick={onClick2}>{nameNext}</button>
+    </div>
+    
   )
 }
 

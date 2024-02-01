@@ -3,19 +3,21 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  color: #888;
+  background-color: rgb(214, 191, 162);
 }
 
-.logo {
+#logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
+h1, h2{
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  filter: drop-shadow(0 0 2em #6f7172aa);
 }
 
 @keyframes logo-spin {
@@ -27,16 +29,32 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
 
-.card {
+  #logo {
+    animation: logo-spin infinite 20s linear;
+    border-radius: 50%;
+  } 
+
+
+div {
   padding: 2em;
 }
 
-.read-the-docs {
+#score {
   color: #888;
+  
+}
+
+.show {
+  visibility: visible;
+}
+
+.noShow {
+  visibility: hidden;
+}
+
+button {
+  margin: 0 auto;
+  padding: 2rem;
+  color: rgb(34, 36, 35);
 }
