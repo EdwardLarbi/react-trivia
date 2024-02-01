@@ -15,10 +15,10 @@ const Button = ({namePrev, nameNext, onClick1, onClick2} : Props) => {
     }
     
   return (
-    <div className={clickCount != 19 ? "show" : "noShow" } onClick={toggle}>
+    <span className={clickCount != 19 ? "show" : "noShow" } onClick={toggle}>
         <button onClick={onClick1}>{namePrev}</button>
         <button onClick={onClick2}>{nameNext}</button>
-    </div>
+    </span>
     
   )
 }
