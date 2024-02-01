@@ -3,7 +3,9 @@ import './App.css'
 import Button from './components/Button'
 
 
+
 let score = 0;
+let attempts = 1;
 
 let trivia = [
   {
@@ -90,29 +92,31 @@ let trivia = [
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(0);
-  //const [response, setResponse] = useState("");
 
   const nextTrivia = () => {
     setQuestionNumber(prevQuestionNumber => prevQuestionNumber + 1);
     questionNumber == 19 && setQuestionNumber(19);
+    attempts++;
   }
 
   const prevTrivia = () => {
     setQuestionNumber(prevQuestionNumber => prevQuestionNumber - 1);
     questionNumber == 0 && setQuestionNumber(0);
+    attempts++;
   }
 
   function answerClicked(){
-    //setResponse(trivia[questionNumber].answer);
     score++;
     nextTrivia();
+    
   }
 
   function failQuestion(){
-    //setResponse("");
     score--;
     nextTrivia();
+  
   }
+
 
   let answerIndex = Math.floor(Math.random() * 4);
   let possibleAnswers = [];
@@ -122,23 +126,25 @@ function App() {
   }
   return (
     <>
-      <h1>Trivia Game</h1>
-      <p>
-          {trivia[questionNumber].question}
-      </p>
-      <ul>
-          { 
-            possibleAnswers.map(
-              (x) => x === trivia[questionNumber].answer ? <li onClick={answerClicked}>{x}</li> : <li onClick={failQuestion}>{x}</li>
-            ) 
-          }
-      </ul>
+      <img src="https://t4.ftcdn.net/jpg/03/32/68/71/360_F_332687153_gmsohq86koOEWFYlYSI3N6xzb1zIcG88.jpg" alt="game logo" id='logo' />
+      <h1>20 Question Trivia Game</h1>
+      <h2>Attempt {attempts} of 20</h2>
+      <div className={attempts != 20 ? "show" : "noShow" }>
+          <p>
+              {trivia[questionNumber].question}
+          </p>
+          <ul>
+              { 
+                possibleAnswers.map(
+                  (x) => x === trivia[questionNumber].answer ? <li onClick={answerClicked}>{x}</li> : <li onClick={failQuestion}>{x}</li>
+                ) 
+              }
+          </ul>
+          <Button namePrev='prev' nameNext='next' onClick1={prevTrivia} onClick2={nextTrivia}/>
+      </div>
       
-      
-      <Button name='prev' onClick={prevTrivia}/>
-      <Button name='next' onClick={nextTrivia}/>
       <div>
-          <span>score: {score}</span>
+          <span id='score'>score: {score}</span>
       </div>
     </>
   )
